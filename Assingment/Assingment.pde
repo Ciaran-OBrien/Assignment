@@ -1,7 +1,8 @@
 /*
 Student Name: Ciarán O'Brien
 Student Number: C15765215
-Processing code that creates an array of planes.
+Processing code that creates an array of rotating 
+planets.
 */
 
 float rotation = 0;
@@ -43,8 +44,8 @@ void planetEarth()
 
   pushMatrix();
   translate(200,200,-500);
-  rotateY(rotation);
-  rotation = rotation + 0.025;
+  rotateY(mouseY);
+  ///rotation = rotation + 0.025;
   shape(planets[0]);
   popMatrix();
 
@@ -55,8 +56,8 @@ void planetMars()
 {
   pushMatrix();
   translate(800,200,-500);
-  rotateY(rotation);
-  rotation = rotation + 0.025;
+  rotateY(mouseY);
+  //rotation = rotation + 0.025;
   shape(planets[1]);
   popMatrix();
 
