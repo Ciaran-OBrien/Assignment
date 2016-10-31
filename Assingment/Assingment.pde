@@ -1,3 +1,8 @@
+/*
+Student Name: Ciarán O'Brien
+Student Number: C15765215
+Processing code that creates an array of planes.
+*/
 
 int numOfPlanets = 2;
 
