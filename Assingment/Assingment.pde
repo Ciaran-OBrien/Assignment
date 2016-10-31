@@ -4,6 +4,7 @@ Student Number: C15765215
 Processing code that creates an array of planes.
 */
 
+float rotation = 0;
 int numOfPlanets = 2;
 
 PImage earthPhoto,marsPhoto;
@@ -42,6 +43,8 @@ void planetEarth()
 
   pushMatrix();
   translate(200,200,-500);
+  rotateY(rotation);
+  rotation = rotation + 0.025;
   shape(planets[0]);
   popMatrix();
 
@@ -52,6 +55,8 @@ void planetMars()
 {
   pushMatrix();
   translate(800,200,-500);
+  rotateY(rotation);
+  rotation = rotation + 0.025;
   shape(planets[1]);
   popMatrix();
 
