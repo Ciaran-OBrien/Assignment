@@ -33,7 +33,7 @@ void draw()
   background(0); //Space is super black !
   planetEarth();
   planetMars();
-  
+  sun();
 }
 
 // Method that pushes a 'Planet Earth' to a certain co-ordinate
@@ -57,6 +57,18 @@ void planetMars()
   rotateY(rotation);
   rotation = rotation + 0.025;
   shape(planets[1]);
+  popMatrix();
+
+}
+
+void sun()
+{
+  
+  pushMatrix();
+  translate(width/2,height/2);
+  rotateY(-rotation);
+  rotation = rotation + 0.006;
+  shape(planets[0]);
   popMatrix();
 
 }
