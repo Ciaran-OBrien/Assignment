@@ -1,3 +1,8 @@
+import peasy.*;
+import peasy.org.apache.commons.math.*;
+import peasy.org.apache.commons.math.geometry.*;
+import peasy.test.*;
+
 /*
 Student Name: Ciarán O'Brien
 Student Number: C15765215
@@ -10,11 +15,14 @@ int numOfPlanets = 3;
 PImage[] planetSurface = new PImage[4];
 PShape[] planets = new PShape[numOfPlanets];
 
+PeasyCam cam;
+
 void setup ()
 {
 
   size(1000,1000,P3D);
   noStroke();
+  cam = new PeasyCam(this,width/2,height/2,600,0);
 
   for (int i = 0; i < numOfPlanets;i ++)
   {
@@ -25,6 +33,8 @@ void setup ()
     // set each planet image as a texture to the planet.
     planets [i].setTexture(planetSurface[i]);
   }
+  
+  
 
 }
 

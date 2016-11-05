@@ -3,6 +3,11 @@ class Planets {
   float rotation; 
   
   PShape sphere;
+  
+  Planets(PImage img[], PShape planetArray[])
+  {
+    
+  }
  
   void show() {
   pushMatrix();
