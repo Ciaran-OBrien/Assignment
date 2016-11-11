@@ -13,8 +13,11 @@ Processing code that creates an array of planes.
 float rotation = 0.000f;
 int numOfPlanets = 3;
 
+ArrayList<PlanetData> data = new ArrayList<PlanetData>();
+
 PImage[] planetSurface = new PImage[4];
 PShape[] planets = new PShape[numOfPlanets];
+float[] planetSize = new float[numOfPlanets];
 
 // Initialise a new camera. It's starting position delclared below
 PeasyCam cam;
@@ -26,7 +29,7 @@ void setup ()
 
   size(1000,1000,P3D);
   noStroke();
-  cam = new PeasyCam(this,width/2,height/2,600,0);
+  cam = new PeasyCam(this,width/2,height/2,900,0);
 
   for (int i = 0; i < numOfPlanets;i ++)
   {
@@ -40,7 +43,7 @@ void setup ()
   
   // Create a new class object, passing two values: 
   // The planet's rotation speed and the planet shape with accompaning texture
-  sun = new Planets(0.05,planets[0]); 
+  sun = new Planets(0.006,planets[0]); 
   
 
 }
@@ -88,5 +91,12 @@ void sun()
   rotation = rotation + 0.006;
   shape(planets[0]);
   popMatrix();
+
+}
+
+void loadData(){
+  
+  data.clear();
+  String[] lines = loadStrings("solarSystem.csv");
 
 }
