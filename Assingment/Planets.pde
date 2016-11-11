@@ -1,19 +1,22 @@
 class Planets {
   
-  float rotation; 
+  float rotation = 0;; 
+  float planetRotation;
+  PShape planet;
   
-  PShape sphere;
-  
-  Planets(PImage img[], PShape planetArray[])
+  Planets(float r, PShape p)
   {
-    
+    planetRotation = r;
+    planet = p;
   }
  
-  void show() {
-  pushMatrix();
-  translate(height/2,width/2);
-  
-  popMatrix();
+  void create() {
+    pushMatrix();
+    translate(width/2, height/2, 0);
+    rotateY(rotation);
+    rotation = rotation + planetRotation;
+    shape(planet);
+    popMatrix();
   } 
 
 

@@ -1,7 +1,8 @@
 import peasy.*;
 import peasy.org.apache.commons.math.*;
 import peasy.org.apache.commons.math.geometry.*;
-import peasy.test.*;
+
+
 
 /*
 Student Name: Ciarán O'Brien
@@ -15,7 +16,10 @@ int numOfPlanets = 3;
 PImage[] planetSurface = new PImage[4];
 PShape[] planets = new PShape[numOfPlanets];
 
+// Initialise a new camera. It's starting position delclared below
 PeasyCam cam;
+// Initialise each instance of the class Planet
+Planets sun;
 
 void setup ()
 {
@@ -34,6 +38,9 @@ void setup ()
     planets [i].setTexture(planetSurface[i]);
   }
   
+  // Create a new class object, passing two values: 
+  // The planet's rotation speed and the planet shape with accompaning texture
+  sun = new Planets(0.05,planets[0]); 
   
 
 }
@@ -41,9 +48,10 @@ void setup ()
 void draw()
 {
   background(0); //Space is super black !
-  planetEarth();
-  planetMars();
-  sun();
+  //planetEarth();
+  //planetMars();
+  //sun();
+  sun.create();
 }
 
 // Method that pushes a 'Planet Earth' to a certain co-ordinate
