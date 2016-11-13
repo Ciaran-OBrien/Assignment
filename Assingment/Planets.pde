@@ -49,7 +49,10 @@ class Planets {
      
      }
      
-
+     
+     float getX(){return planetPosX;}
+     float getY(){return planetPosY;}
+     float getZ(){return planetPosZ;}
      
 
     }
