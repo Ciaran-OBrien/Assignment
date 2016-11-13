@@ -3,6 +3,7 @@ class Planets {
   float rotation = 0;; 
   float planetRotation;
   float rotationRadius;
+  float planetOrbitSpeed;
   PShape planet;
   
   // Variables for rotation 
@@ -13,10 +14,11 @@ class Planets {
   int cy = height/2;
   int cz = (cx+cy)/2;
   
-  Planets(float r,int s, PShape p)
+  Planets(float r,int s,float o, PShape p)
   {
-    rotationRadius = s;
     planetRotation = r;
+    rotationRadius = s;
+    planetOrbitSpeed = o;
     planet = p;
   }
  
@@ -34,14 +36,20 @@ class Planets {
  
    void create(){
      pushMatrix();
-     float t = millis()/600.0f;
+     float t = millis()/planetOrbitSpeed;
      planetPosX = (int)(cx+rotationRadius*cos(t));
      planetPosY = (int)(cy+rotationRadius*sin(t));
      planetPosZ = (int)(cz+rotationRadius*sin(t));
-     translate(planetPosX,height/2,planetPosZ);
+     translate(planetPosX,width/2,planetPosZ);
      rotateY(rotation);
      rotation = rotation + planetRotation;
      shape(planet);
      popMatrix();
+     
+     
      }
+     
+
+     
+
     }
