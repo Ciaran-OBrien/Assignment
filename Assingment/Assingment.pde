@@ -13,6 +13,8 @@ Processing code that creates an array of planes.
 float rotation = 0.000f;
 int numOfPlanets = 3;
 
+
+
 ArrayList<PlanetData> data = new ArrayList<PlanetData>();
 
 PImage[] planetSurface = new PImage[4];
@@ -22,14 +24,14 @@ float[] planetSize = new float[numOfPlanets];
 // Initialise a new camera. It's starting position delclared below
 PeasyCam cam;
 // Initialise each instance of the class Planet
-Planets sun;
+Planets sun,mars,earth;
 
 void setup ()
 {
 
   size(1000,1000,P3D);
   noStroke();
-  cam = new PeasyCam(this,width/2,height/2,900,0);
+  cam = new PeasyCam(this,width/2,height/2,1500,0);
 
   for (int i = 0; i < numOfPlanets;i ++)
   {
@@ -43,7 +45,9 @@ void setup ()
   
   // Create a new class object, passing two values: 
   // The planet's rotation speed and the planet shape with accompaning texture
-  sun = new Planets(0.006,planets[0]); 
+  sun = new Planets(0.006,0,planets[0]); 
+  mars = new Planets(0.006,600,planets[1]);
+  earth = new Planets(0.006,1200,planets[2]);
   
 
 }
@@ -54,46 +58,12 @@ void draw()
   //planetEarth();
   //planetMars();
   //sun();
-  sun.create();
+  sun.shine();
+  mars.create();
+  earth.create();
 }
 
-// Method that pushes a 'Planet Earth' to a certain co-ordinate
-void planetEarth()
-{
-
-  pushMatrix();
-  translate(200,200,-500);
-  rotateY(rotation);
-  rotation = rotation + 0.025;
-  shape(planets[2]);
-  popMatrix();
-
-}
-
-// Method that pushes a 'Planet Mars' to a certain co-ordinate
-void planetMars()
-{
-  pushMatrix();
-  translate(800,200,-500);
-  rotateY(rotation);
-  rotation = rotation + 0.025;
-  shape(planets[1]);
-  popMatrix();
-
-}
-
-void sun()
-{
-  
-  pushMatrix();
-  translate(width/2,height/2);
-  rotateY(-rotation);
-  rotation = rotation + 0.006;
-  shape(planets[0]);
-  popMatrix();
-
-}
-
+// Loading the data of the planets from csv file
 void loadData(){
   
   data.clear();
