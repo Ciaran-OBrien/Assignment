@@ -83,3 +83,23 @@ void loadData(){
   String[] lines = loadStrings("solarSystem.csv");
 
 }
+
+void keyPressed(){
+
+
+   if (key == 'q'){
+    planetIndex = 1;
+    cam = new PeasyCam(this,mars.getX(),width/2,mars.getZ(),400);
+    planets[0].setVisible(false);
+    planets[planetIndex+1].setVisible(false);
+    planets[planetIndex+2].setVisible(false);
+   }
+   
+   if (key == 'p'){
+    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
+    for (int i =0;i < numOfPlanets; i++){
+      planets[i].setVisible(true);
+    }
+ }
+ 
+}
