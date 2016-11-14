@@ -12,6 +12,7 @@ Processing code that creates an array of planes.
 
 float rotation = 0.000f;
 int numOfPlanets = 9;
+int planetIndex;
 
 
 
