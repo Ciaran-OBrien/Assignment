@@ -13,6 +13,7 @@ Processing code that creates an array of planes.
 float rotation = 0.000f;
 int numOfPlanets = 9;
 int planetIndex;
+int cameraDistance = 400;
 
 
 
@@ -89,7 +90,7 @@ void keyPressed(){
 
    if (key == 'q'){
     planetIndex = 1;
-    cam = new PeasyCam(this,mars.getX(),width/2,mars.getZ(),400);
+    cam = new PeasyCam(this,mars.getX(),width/2,mars.getZ(),cameraDistance);
     planets[0].setVisible(false);
     planets[planetIndex+1].setVisible(false);
     planets[planetIndex+2].setVisible(false);
