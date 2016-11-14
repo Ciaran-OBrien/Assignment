@@ -72,6 +72,8 @@ void draw()
   saturn.create();
   uranus.create();
   neptune.create();
+  
+  keyPressed();
 }
 
 // Loading the data of the planets from csv file
