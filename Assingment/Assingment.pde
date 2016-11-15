@@ -34,7 +34,7 @@ void setup ()
 
   size(1000,1000,P3D);
   noStroke();
-  cam = new PeasyCam(this,width/2,height/2,2500,0);
+  cam = new PeasyCam(this,width/2,height/2-200,2500,0);
 
   for (int i = 0; i < numOfPlanets;i ++)
   {
