@@ -35,9 +35,6 @@ void setup ()
   size(1000,1000,P3D);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2,2500,0);
-  
-  //Ensure the sun is created 
-  //classPlanets[0] = new Planets(0.006,0,0,planets[0]); 
 
   for (int i = 0; i < numOfPlanets;i ++)
   {
@@ -47,22 +44,15 @@ void setup ()
     planets [i] = createShape(SPHERE,50);
     // set each planet image as a texture to the planet.
     planets [i].setTexture(planetSurface[i]);
-    
+    // Create a new class object, passing two values: 
+    // The planet's rotation speed and the planet shape with accompaning texture
     classPlanets[i] = new Planets(0.006,planetDistance,random(100,1000),planets[i]);
+    // Currently the planets are all going to be equadistance from each other by 150 pixels
     planetDistance += 150;
   }
   
-  // Create a new class object, passing two values: 
-  // The planet's rotation speed and the planet shape with accompaning texture
 
-  //classPlanets[1] = new Planets(0.006,150,random(100,1000),planets[1]);
-  //classPlanets[2] = new Planets(0.006,300,random(100,1000),planets[2]);
-  //classPlanets[3] = new Planets(0.006,450,random(100,1000),planets[3]);
-  //classPlanets[4] = new Planets(0.006,600,random(100,1000),planets[4]);
-  //classPlanets[5] = new Planets(0.006,750,random(100,1000),planets[5]);
-  //classPlanets[6] = new Planets(0.006,900,random(100,1000),planets[6]);
-  //classPlanets[7] = new Planets(0.006,1050,random(100,1000),planets[7]);
-  //classPlanets[8] = new Planets(0.006,1200,random(100,1000),planets[8]);
+
   
 
 }
