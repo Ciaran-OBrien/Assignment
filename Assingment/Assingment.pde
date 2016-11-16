@@ -80,7 +80,7 @@ void keyPressed(){
 
 
    if (key == 'q'){
-    planetIndex = 1;
+    planetIndex = 5;
     cam = new PeasyCam(this,classPlanets[planetIndex].getX(),width/2,classPlanets[planetIndex].getZ(),cameraDistance);
     planets[0].setVisible(false);
     planets[planetIndex+1].setVisible(false);
