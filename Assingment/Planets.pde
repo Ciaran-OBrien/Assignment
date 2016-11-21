@@ -1,3 +1,4 @@
+
 class Planets {
   
   float rotation = 0;; 
@@ -7,12 +8,12 @@ class Planets {
   PShape planet;
   
   // Variables for rotation 
-  float planetPosX;
-  float planetPosY;  
-  float planetPosZ;
+  float planetPosX = 0.0000f; // New 0.0000f
+  float planetPosY = 0.0000f;  
+  float planetPosZ = 0.0000f;
   int cx = width/2;
   int cy = height/2;
-  int cz = (cx+cy)/2;
+  int cz = height/2;
   
   Planets(float r,int s,float o, PShape p)
   {
@@ -37,19 +38,16 @@ class Planets {
    void create(){
      pushMatrix();
      float t = millis()/planetOrbitSpeed;
-     planetPosX = (int)(cx+rotationRadius*cos(t));
-     planetPosY = (int)(cy+rotationRadius*sin(t));
-     planetPosZ = (int)(cz+rotationRadius*sin(t));
-     translate(planetPosX,width/2,planetPosZ);
+     planetPosX = (cx+rotationRadius*cos(t));
+     planetPosY = (cy+rotationRadius*sin(t));
+     planetPosZ = (cz+rotationRadius*sin(t));  
+     translate(planetPosX,height/2,planetPosZ);
      rotateY(rotation);
      rotation = rotation + planetRotation;
      shape(planet);
      popMatrix();
-     
-     
      }
-     
-     
+
      float getX(){return planetPosX;}
      float getY(){return planetPosY;}
      float getZ(){return planetPosZ;}
