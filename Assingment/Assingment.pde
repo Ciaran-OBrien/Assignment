@@ -1,6 +1,3 @@
-
-
-
 import peasy.*;
 import peasy.org.apache.commons.math.*;
 import peasy.org.apache.commons.math.geometry.*;
@@ -20,7 +17,7 @@ int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
 
-//New new new
+
 String lastInput = new String();
 String currentInput = new String();
 PFont myFont; 
@@ -42,16 +39,14 @@ PeasyCam cam;
 Planets[] classPlanets = new Planets[numOfPlanets];
 
 
-void setup ()
-{
+void setup (){
   //fullScreen(P3D);
   size(1000,1000,P3D);
   frameRate(24);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
 
-  for (int i = 0; i < numOfPlanets;i ++)
-  {
+  for (int i = 0; i < numOfPlanets;i ++){
     // Load the images of the planets to an array
     planetSurface[i] = loadImage("/images/planet" + i + ".jpg");
     // create an array of sphere shapes
@@ -59,7 +54,7 @@ void setup ()
     // set each planet image as a texture to the planet.
     planets [i].setTexture(planetSurface[i]);
     
-    //New new new
+
     myFont = createFont("FFScala", 32);
     textFont(myFont);
     textAlign(CENTER);
@@ -85,10 +80,8 @@ void setup ()
 
 }
 
-void draw()
-{
+void draw(){
   background(0); //Space is super black !
-  // New new new
   classPlanets[0].shine();
   for (int i=1;i<numOfPlanets;i++){
     classPlanets[i].create();
@@ -102,7 +95,7 @@ void draw()
   //uranus.create();
   //neptune.create();
   
-    // New new new
+  //HUD code, needs more work/research
   cam.beginHUD();
   fill(255);
   textSize(100);
@@ -111,10 +104,6 @@ void draw()
   text(currentInput,width/2,height-50);
   cam.endHUD();
   check();
-
-
-  
-
   
 }
 
@@ -126,43 +115,19 @@ void loadData(){
 
 }
 
-// New new new
 void keyPressed(){
 
-
-  if (key == 'q'){
-   planetIndex = 1;
-   cam = new PeasyCam(this,classPlanets[planetIndex].getX(),width/2,classPlanets[planetIndex].getZ(),cameraDistance);
-   planets[0].setVisible(false);
-   planets[planetIndex+1].setVisible(false);
-   planets[planetIndex+2].setVisible(false);
-  }
-   
-   if (key == 'p'){
-    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
-    for (int i =0;i < numOfPlanets; i++){
-      planets[i].setVisible(true);
-    }
- }
-   
-     //New new new
-    
-  if(key == ENTER)
-  {
-    //lastInput = currentInput = currentInput + key;
-    //check();
+  if(key == ENTER){
     currentInput = "";
     cam = new PeasyCam(this,width/2,height/2-200,3000,0);
     for (int i =0;i < numOfPlanets; i++){
       planets[i].setVisible(true);
     }
   }
-  else if(key == BACKSPACE && currentInput.length() > 0)
-  {
+  else if(key == BACKSPACE && currentInput.length() > 0){
     currentInput = currentInput.substring(0, currentInput.length() - 1);
   }
-  else
-  {
+  else{
     currentInput = currentInput + key;
   }
 
@@ -176,11 +141,9 @@ void check(){
          background(0);
          planetIndex = i;
          classPlanets[planetIndex].shine();
-
          cam = new PeasyCam(this,width/2, height/2,height/2,cameraDistance);
 
       }
-         
 
   }
 
