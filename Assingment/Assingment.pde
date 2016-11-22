@@ -10,9 +10,8 @@ Student Number: C15765215
 Processing code that creates an array of planes.
 */
 
-float rotation = 0.000f;
-int numOfPlanets = 9;
 
+int numOfPlanets = 9;
 int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
@@ -40,8 +39,8 @@ Planets[] classPlanets = new Planets[numOfPlanets];
 
 
 void setup (){
-  //fullScreen(P3D);
-  size(1000,1000,P3D);
+  fullScreen(P3D);
+  //size(1000,1000,P3D);
   frameRate(24);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
@@ -95,14 +94,13 @@ void draw(){
   //uranus.create();
   //neptune.create();
   
-  //HUD code, needs more work/research
-  cam.beginHUD();
+   
   fill(255);
   textSize(100);
   //text(lastInput,width/2,height/2);
   fill(255,0,0);
   text(currentInput,width/2,height-50);
-  cam.endHUD();
+
   check();
   
 }
@@ -119,9 +117,9 @@ void keyPressed(){
 
   if(key == ENTER){
     currentInput = "";
-    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
+    cam = new PeasyCam(this,classPlanets[0].getX(),classPlanets[0].getY()-200,3000,0);
     for (int i =0;i < numOfPlanets; i++){
-      planets[i].setVisible(true);
+     planets[i].setVisible(true);
     }
   }
   else if(key == BACKSPACE && currentInput.length() > 0){
@@ -141,8 +139,8 @@ void check(){
          background(0);
          planetIndex = i;
          classPlanets[planetIndex].shine();
-         cam = new PeasyCam(this,width/2, height/2,height/2,cameraDistance);
-
+         cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
+        
       }
 
   }

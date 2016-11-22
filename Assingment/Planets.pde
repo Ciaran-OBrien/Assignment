@@ -25,7 +25,7 @@ class Planets {
  
   void shine() {
     pushMatrix();
-    translate(width/2, height/2, cy);
+    translate(cx, cy, cz);
     rotateY(rotation);
     rotation = rotation + planetRotation;
     shape(planet);
@@ -41,16 +41,16 @@ class Planets {
      planetPosX = (cx+rotationRadius*cos(t));
      planetPosY = (cy+rotationRadius*sin(t));
      planetPosZ = (cz+rotationRadius*sin(t));  
-     translate(planetPosX,height/2,planetPosZ);
+     translate(planetPosX,cy,planetPosZ);
      rotateY(rotation);
      rotation = rotation + planetRotation;
      shape(planet);
      popMatrix();
      }
 
-     float getX(){return planetPosX;}
-     float getY(){return planetPosY;}
-     float getZ(){return planetPosZ;}
+     float getX(){return cx;}
+     float getY(){return cy;}
+     float getZ(){return cz;}
      
 
     }
