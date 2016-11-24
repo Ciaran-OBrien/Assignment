@@ -39,8 +39,8 @@ Planets[] classPlanets = new Planets[numOfPlanets];
 
 
 void setup (){
-  fullScreen(P3D);
-  //size(1000,1000,P3D);
+  //fullScreen(P3D);
+  size(1000,1000,P3D);
   frameRate(24);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
@@ -127,6 +127,8 @@ void keyPressed(){
   }
   else{
     currentInput = currentInput + key;
+    cam = new PeasyCam(this,classPlanets[0].getX(),classPlanets[0].getY()-200,3000,0);
+
   }
 
 
