@@ -37,6 +37,9 @@ PeasyCam cam;
 // New new new aray of class objects
 Planets[] classPlanets = new Planets[numOfPlanets];
 
+// Initialise a new object of type prompt
+// a method within the class will be called to display the prompt 
+Prompt newLine;
 
 void setup (){
   //fullScreen(P3D);
@@ -76,7 +79,7 @@ void setup (){
     planetDistance +=150;
   }
   
-
+  newLine = new Prompt();
 }
 
 void draw(){
@@ -102,6 +105,8 @@ void draw(){
   text(currentInput,width/2,height-50);
 
   check();
+  
+  newLine.activate();
   
 }
 
