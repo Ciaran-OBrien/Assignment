@@ -23,6 +23,7 @@ PFont myFont;
 String planetsMars = "mars";
 String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","saturn","uranus","neptune"};
 
+boolean stringCheck = false;
 
 ArrayList<PlanetData> data = new ArrayList<PlanetData>();
 
@@ -82,7 +83,7 @@ void setup (){
   }
   
   newLine = new Prompt();
-  userText = new Text();
+  userText = new Text(stringCheck);
 }
 
 void draw(){
@@ -103,7 +104,7 @@ void draw(){
 
   
   userText.display();
-  
+  userText.askUser();
  
   check();
   
@@ -139,6 +140,7 @@ void keyPressed(){
   }
   else{
     currentInput = currentInput + key;
+    
     cam = new PeasyCam(this,classPlanets[0].getX(),classPlanets[0].getY()-200,3000,0);
 
   }
@@ -159,4 +161,9 @@ void check(){
 
   }
 
+  if (currentInput != "")
+  {
+    stringCheck = true;
+  }
+  
 }
