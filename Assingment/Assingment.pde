@@ -41,6 +41,8 @@ Planets[] classPlanets = new Planets[numOfPlanets];
 // a method within the class will be called to display the prompt 
 Prompt newLine;
 
+Text userText;
+
 void setup (){
   //fullScreen(P3D);
   size(1000,1000,P3D);
@@ -80,13 +82,14 @@ void setup (){
   }
   
   newLine = new Prompt();
+  userText = new Text();
 }
 
 void draw(){
   background(0); //Space is super black !
   classPlanets[0].shine();
   for (int i=1;i<numOfPlanets;i++){
-    classPlanets[i].create();
+   classPlanets[i].create();
   }
   //mars.create();
   //venus.create();
@@ -97,16 +100,20 @@ void draw(){
   //uranus.create();
   //neptune.create();
   
-   
-  fill(255);
-  textSize(100);
-  //text(lastInput,width/2,height/2);
-  fill(255,0,0);
-  text(currentInput,width/2,height-50);
 
+  
+  userText.display();
+  
+ 
   check();
   
   newLine.activate();
+  
+  
+  //newLine.test();
+      //stroke(50,205,50);
+    //strokeWeight(8);
+  //line (width-10,height-60,width-35, height -5,100,100);
   
 }
 
