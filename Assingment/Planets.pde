@@ -1,11 +1,12 @@
-
-class Planets {
+class Planets extends Details{
   
   float rotation = 0;; 
   float planetRotation;
   float rotationRadius;
   float planetOrbitSpeed;
   PShape planet;
+  
+  Details planetNames = new Details();
   
   // Variables for rotation 
   float planetPosX = 0.0000f; // New 0.0000f
@@ -30,6 +31,8 @@ class Planets {
     rotation = rotation + planetRotation;
     shape(planet);
     popMatrix();
+    planetNames.earth();
+    
     
    
   } 

@@ -81,9 +81,10 @@ void setup (){
     classPlanets[i] = new Planets(0.006, planetDistance, random(1000,2000),planets[i]);
     planetDistance +=150;
   }
+  currentInput = "";
   
   newLine = new Prompt();
-  userText = new Text(stringCheck);
+  userText = new Text();
 }
 
 void draw(){
@@ -92,20 +93,12 @@ void draw(){
   for (int i=1;i<numOfPlanets;i++){
    classPlanets[i].create();
   }
-  //mars.create();
-  //venus.create();
-  //earth.create();
-  //mercury.create();
-  //jupiter.create();
-  //saturn.create();
-  //uranus.create();
-  //neptune.create();
-  
-
   
   userText.display();
+  if (currentInput == "")
+  {
   userText.askUser();
- 
+  }
   check();
   
   newLine.activate();
@@ -161,9 +154,9 @@ void check(){
 
   }
 
-  if (currentInput != "")
-  {
-    stringCheck = true;
-  }
+  //if (currentInput != "")
+  //{
+  //  stringCheck = true;
+  //}
   
 }
