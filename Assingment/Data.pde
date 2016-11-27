@@ -1,4 +1,3 @@
-
 class PlanetData{
 
   String name;

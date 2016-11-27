@@ -16,10 +16,11 @@ int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
 
+float sx [] = new float [20];
+float sy [] = new float [20];
 
-String lastInput = new String();
 String currentInput = new String();
-PFont myFont; 
+PFont myFont,detailText; 
 String planetsMars = "mars";
 String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","saturn","uranus","neptune"};
 
@@ -44,10 +45,13 @@ Prompt newLine;
 
 Text userText;
 
+//Details allDetails;
+
+
 void setup (){
+
   //fullScreen(P3D);
   size(1000,1000,P3D);
-  frameRate(24);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
 
@@ -85,6 +89,10 @@ void setup (){
   
   newLine = new Prompt();
   userText = new Text();
+  
+  detailText = createFont("ARCADE",40);
+
+
 }
 
 void draw(){
@@ -96,9 +104,10 @@ void draw(){
   
   userText.display();
   if (currentInput == "")
-  {
-  userText.askUser();
-  }
+    {
+      userText.askUser();
+    }
+    
   check();
   
   newLine.activate();
@@ -108,7 +117,7 @@ void draw(){
       //stroke(50,205,50);
     //strokeWeight(8);
   //line (width-10,height-60,width-35, height -5,100,100);
-  
+
 }
 
 // Loading the data of the planets from csv file
@@ -149,10 +158,12 @@ void check(){
          planetIndex = i;
          classPlanets[planetIndex].shine();
          cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
-        
+         displayDetails();
       }
 
   }
+
+
 
   //if (currentInput != "")
   //{
@@ -160,3 +171,44 @@ void check(){
   //}
   
 }
+  
+  String [] planetDetails = {"Earth","Explored","Develop","8.6 Parsecs","7 Million"};
+  
+  String planetName = "Earth";
+  String planetStatus = "Explored";
+  String planetDiscription = "Developing liveform curretnly occupies the planet";
+  String planetDistanceDetail = "8.6 parsecs";
+  String planetInhabitants = "7 Million";
+
+void displayDetails(){
+    translate(0,0,-300);
+   
+    star(width/2, height/2, 450, 5); 
+    //text(planetName, width*0.05, height*0.2,-700);
+    //text(planetStatus, width*0.4, height*0.4,-700);
+    //text(planetDiscription, width*0.6, height*0.6,-700);
+    //text(planetDistanceDetail, width*0.8, height*0.8,-700);
+    //text(planetInhabitants, width*(2/4), height/5,-700);
+
+  
+  }
+  
+// Modified Star code from lab 
+void star(float x, float y, float radius, int npoints) {
+  int count = 0;
+  float shake = 0.001f;
+  float b = 0;
+  float angle = TWO_PI / npoints;
+  for (float a = 0; a < TWO_PI; a += angle) {
+    sx[count] = x + cos(a) * radius;
+    sy[count] = y + sin(a) * radius;
+    //textSize(40);
+    textFont(detailText);
+    text(planetDetails[count], sx[count]+ random(b-shake,b+shake), sy[count]+ random(b-shake,b+shake));
+    //text(planetDetails[count], sx[count], sy[count]);
+    count++;
+
+  }
+
+}
+  

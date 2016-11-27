@@ -1,4 +1,4 @@
-class Text {
+class Text{
   int textPadding = 890;
   String ask = "Please start typing the name of the planet";
 
@@ -20,5 +20,7 @@ class Text {
       fill(255, 0, 0);
       text(ask, width/2, height+textPadding);
     }
+    
 
-}
+  }
+    
