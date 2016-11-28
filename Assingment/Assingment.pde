@@ -16,8 +16,8 @@ int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
 
-float sx [] = new float [20];
-float sy [] = new float [20];
+float sx [] = new float [6];
+float sy [] = new float [6];
 
 String currentInput = new String();
 PFont myFont,detailText; 
@@ -45,13 +45,14 @@ Prompt newLine;
 
 Text userText;
 
-//Details allDetails;
+Details allDetails;
 
 
 void setup (){
 
   //fullScreen(P3D);
   size(1000,1000,P3D);
+  frameRate(60);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
 
@@ -64,9 +65,6 @@ void setup (){
     planets [i].setTexture(planetSurface[i]);
     
 
-    myFont = createFont("FFScala", 32);
-    textFont(myFont);
-    textAlign(CENTER);
   }
   
   // Create a new class object, passing two values: 
@@ -90,8 +88,8 @@ void setup (){
   newLine = new Prompt();
   userText = new Text();
   
-  detailText = createFont("ARCADE",40);
-
+  
+  allDetails = new Details();
 
 }
 
@@ -158,7 +156,7 @@ void check(){
          planetIndex = i;
          classPlanets[planetIndex].shine();
          cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
-         displayDetails();
+         displayDetails(width/2, height/2, 450, 5);
       }
 
   }
@@ -172,7 +170,7 @@ void check(){
   
 }
   
-  String [] planetDetails = {"Earth","Explored","Develop","8.6 Parsecs","7 Million"};
+  //String [] planetDetails = {"Earth","Explored","Develop","8.6 Parsecs","7 Million"};
   
   String planetName = "Earth";
   String planetStatus = "Explored";
@@ -180,35 +178,54 @@ void check(){
   String planetDistanceDetail = "8.6 parsecs";
   String planetInhabitants = "7 Million";
 
-void displayDetails(){
+void displayDetails(float x, float y, float radius, int npoints){
     translate(0,0,-300);
-   
-    star(width/2, height/2, 450, 5); 
-    //text(planetName, width*0.05, height*0.2,-700);
-    //text(planetStatus, width*0.4, height*0.4,-700);
-    //text(planetDiscription, width*0.6, height*0.6,-700);
-    //text(planetDistanceDetail, width*0.8, height*0.8,-700);
-    //text(planetInhabitants, width*(2/4), height/5,-700);
+    int count = 0;
+    float shake = 0.001f;
+    float b = 0;
+    float angle = TWO_PI / npoints;
+    for (float a = 0; a < TWO_PI; a += angle) {
+      sx[count] = x + cos(a) * radius;
+      sy[count] = y + sin(a) * radius;
+      detailText = createFont("ARCADE",40);
+      textFont(detailText);
+      
+      switch(currentInput){
 
+        case "mercury":
+          text(allDetails.mercury()[count], sx[count], sy[count]);
+           break;
+           
+        case "venus":
+          text(allDetails.earth()[count], sx[count], sy[count]);
+          break;
+          
+        case "earth":
+          text(allDetails.earth()[count], sx[count], sy[count]);
+          break;
+          
+       case "mars":
+          text(allDetails.mars()[count], sx[count], sy[count]);
+          break;
+          
+       case "jupiter":
+          text(allDetails.jupiter()[count], sx[count], sy[count]);
+          break;
+      
+       case "saturn":
+          text(allDetails.saturn()[count], sx[count], sy[count]);
+          break;
+       
+       case "uranus":
+          text(allDetails.uranus()[count], sx[count], sy[count]);
+          break;
+          
+       case "neptune":
+          text(allDetails.neptune()[count], sx[count], sy[count]);
+          break;      
+      }
+            
+      count++;
   
+    }
   }
-  
-// Modified Star code from lab 
-void star(float x, float y, float radius, int npoints) {
-  int count = 0;
-  float shake = 0.001f;
-  float b = 0;
-  float angle = TWO_PI / npoints;
-  for (float a = 0; a < TWO_PI; a += angle) {
-    sx[count] = x + cos(a) * radius;
-    sy[count] = y + sin(a) * radius;
-    //textSize(40);
-    textFont(detailText);
-    text(planetDetails[count], sx[count]+ random(b-shake,b+shake), sy[count]+ random(b-shake,b+shake));
-    //text(planetDetails[count], sx[count], sy[count]);
-    count++;
-
-  }
-
-}
-  

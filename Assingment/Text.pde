@@ -5,6 +5,10 @@ class Text{
 
   void display()
   {
+    
+    myFont = createFont("FFScala", 32);
+    textFont(myFont);
+    textAlign(CENTER);
     fill(255);
     textSize(100);
     //text(lastInput,width/2,height/2);
@@ -19,8 +23,9 @@ class Text{
       textSize(100);
       fill(255, 0, 0);
       text(ask, width/2, height+textPadding);
-    }
-    
-
   }
     
+
+    
+    
+}
