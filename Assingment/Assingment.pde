@@ -32,6 +32,10 @@ PImage[] planetSurface = new PImage[numOfPlanets];
 PShape[] planets = new PShape[numOfPlanets];
 float[] planetSize = new float[numOfPlanets];
 
+//Star
+Star[] stars = new Star[9000];
+float speed;
+
 // Initialise a new camera. It's starting position delclared below
 PeasyCam cam;
 // Initialise each instance of the class Planet
@@ -83,6 +87,12 @@ void setup (){
     classPlanets[i] = new Planets(0.006, planetDistance, random(1000,2000),planets[i]);
     planetDistance +=150;
   }
+  
+  //star
+  for (int i = 0; i < stars.length; i++) {
+    stars[i] = new Star();
+  }
+  
   currentInput = "";
   
   newLine = new Prompt();
@@ -98,6 +108,15 @@ void draw(){
   classPlanets[0].shine();
   for (int i=1;i<numOfPlanets;i++){
    classPlanets[i].create();
+  }
+  
+  speed = 0;//map(mouseX, 0, width, 0, 50);
+
+  //translate(width/2, height/2,-2000);
+
+  for (int i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].show();
   }
   
   userText.display();
@@ -130,18 +149,20 @@ void keyPressed(){
 
   if(key == ENTER){
     currentInput = "";
-    cam = new PeasyCam(this,classPlanets[0].getX(),classPlanets[0].getY()-200,3000,0);
+     cam = new PeasyCam(this,width/2,height/2-200,3000,0);
     for (int i =0;i < numOfPlanets; i++){
      planets[i].setVisible(true);
     }
   }
   else if(key == BACKSPACE && currentInput.length() > 0){
     currentInput = currentInput.substring(0, currentInput.length() - 1);
-  }
+    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
+  
+}
   else{
     currentInput = currentInput + key;
     
-    cam = new PeasyCam(this,classPlanets[0].getX(),classPlanets[0].getY()-200,3000,0);
+    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
 
   }
 
