@@ -127,16 +127,7 @@ void draw(){
    classPlanets[i].create();
   }
   
-
-  ///speed = 0;//map(mouseX, 0, width, 0, 50);
-
-  //translate(width/2, height/2,-2000);
-
-  for (int i = 0; i < stars.length; i++) {
-   stars[i].update();
-   stars[i].show();
-  }
-  
+  stars();
   
   userText.display();
   if (currentInput == "")
@@ -272,7 +263,21 @@ void displayDetails(float x, float y, float radius, int npoints){
         
     }
   }
- 
+
+void stars()
+{
+
+  ///speed = 0;//map(mouseX, 0, width, 0, 50);
+
+  //translate(width/2, height/2,-2000);
+
+  for (int i = 0; i < stars.length; i++) {
+   stars[i].update();
+   stars[i].show();
+  }
+  
+
+}
   
 void mouseReleased(){
   if(warpReady)
