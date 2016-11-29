@@ -11,8 +11,11 @@
 [Brian's Github Assignment](https://github.com/skooter500/OOP-2016-2017/blob/master/docs/assignments.md)
 Outlined in the brief are the requirements for the assignment.
 
+I took the brief and went with a solar system planet UI, where the user may enter their selected planet name, and they will see the planet's details and then have the option to ,click to go.
 
-### Sample Planets
+Below are som sample codes of what I found either difficult, and/or, interesting to code.
+
+### Sample Code
 
 ### Youtube Video Demo
 
