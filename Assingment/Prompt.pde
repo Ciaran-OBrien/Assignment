@@ -3,10 +3,14 @@ int i,j=0;
 boolean line = false;
 
 
-void test(){
-line (width-10,height-60,width-35, height -5);}
-
-
+void end(){
+  pushMatrix();
+  translate(500,300);
+  stroke(50,205,50);
+  strokeWeight(8);
+  line (width-10,height-10,width-35, height-80,1100,1000);
+  popMatrix();
+}
 void activate()
   {
 
@@ -24,7 +28,7 @@ void activate()
     line(0,0,j,0);
      if (line == true)
      {
-       line (width-10,height-60,width-35, height -5);
+       //line (width-10,height-60,width-35, height -5);
      }
      if (i<width-10 && j < width - 45){i += 10; j += 10;}
      else{line = true;}

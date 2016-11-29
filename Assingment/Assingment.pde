@@ -147,12 +147,7 @@ void draw(){
   stars();
   
   
-  //newLine.test();
-      //stroke(50,205,50);
-    //strokeWeight(8);
-  //line (width-10,height-60,width-35, height -5,100,100);
-
-
+  newLine.end();
   if (click && warpReady)
   {
     warpSpeed();
@@ -203,7 +198,7 @@ void check(){
          displayDetails(width/2, height/2, 450, 5);
          warpReady = true;  
     }
-
+    
 }
 
 
