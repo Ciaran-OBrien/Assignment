@@ -1,7 +1,7 @@
 import peasy.*;
 import peasy.org.apache.commons.math.*;
 import peasy.org.apache.commons.math.geometry.*;
-
+//Imports the peasyCam library that allows me to control the movement of the camera in 3D
 
 /*
 Student Name: Ciarán O'Brien
@@ -9,35 +9,36 @@ Student Number: C15765215
 Processing code that creates an array of planes.
 */
 
-
+//  int variable delcaration. These are used within the Planet class
 int numOfPlanets = 9;
 int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
+// set the max Speed of Warpspeed can be altered to increase final speed
 int maxWarpSpeed = 7;
 
+// Float point array for the x and y positions of the planet details. Populated in the displayDetials method
 float sx [] = new float [6];
 float sy [] = new float [6];
 
-  float amp = 1.00f;
-
+// currentInput is updated everytime a user enters a character keycode
 String currentInput = new String();
+// Different fonts that are used throughout the code
 PFont myFont,detailText; 
-String planetsMars = "mars";
+
 String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","saturn","uranus","neptune"};
 
+// Boolean variables used thoughout the code
 boolean stringCheck = false;
 boolean warpReady = false;
 boolean click = false;
-boolean squareBit = false;
 
-ArrayList<PlanetData> data = new ArrayList<PlanetData>();
-
+// Planet specific arrays
 PImage[] planetSurface = new PImage[numOfPlanets];
 PShape[] planets = new PShape[numOfPlanets];
 float[] planetSize = new float[numOfPlanets];
 
-//Star
+//Star initialisation
 Star[] stars = new Star[9000];
 float speed = 0;
 
@@ -45,7 +46,7 @@ float speed = 0;
 PeasyCam cam;
 // Initialise each instance of the class Planet
 //Planets sun,mars,venus,earth,mercury,jupiter,saturn,uranus,neptune;
-// New new new aray of class objects
+// Aray of class objects
 Planets[] classPlanets = new Planets[numOfPlanets];
 
 // Initialise a new object of type prompt
@@ -59,9 +60,10 @@ Details allDetails;
 Credits endCredits;
 
 void setup (){
-
+  // Fullscreen creates an interesting feature when you select a planet
   //fullScreen(P3D);
   size(1000,1000,P3D);
+  // Even if we set the frameRate, the computer's graphic will determine the frameRate either way
   frameRate(120);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
