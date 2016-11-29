@@ -34,7 +34,6 @@ void activate()
      else{line = true;}
      endShape();
      popMatrix();
-     door.play();
 
       
   }
