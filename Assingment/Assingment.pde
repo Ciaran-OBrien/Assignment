@@ -21,7 +21,7 @@ int numOfPlanets = 9;
 int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
-
+int maxWarpSpeed = 7;
 
 float sx [] = new float [6];
 float sy [] = new float [6];
@@ -33,6 +33,7 @@ String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","satur
 
 boolean stringCheck = false;
 boolean warpReady = false;
+boolean click = false;
 
 ArrayList<PlanetData> data = new ArrayList<PlanetData>();
 
@@ -42,7 +43,7 @@ float[] planetSize = new float[numOfPlanets];
 
 //Star
 Star[] stars = new Star[9000];
-float speed;
+float speed = 0;
 
 // Initialise a new camera. It's starting position delclared below
 PeasyCam cam;
@@ -147,6 +148,11 @@ void draw(){
   //line (width-10,height-60,width-35, height -5,100,100);
 
 
+  if (click && warpReady)
+  {
+    warpSpeed();
+  }
+
 
 
 
@@ -186,21 +192,15 @@ void check(){
 
   for (int i = 0;i< numOfPlanets;i++){
     if(currentInput.equals(planetNames[i]) == true){
-         background(0);
-         stars();
+         clear();
          planetIndex = i;
          classPlanets[planetIndex].shine();
          cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
          displayDetails(width/2, height/2, 450, 5);
          warpReady = true;  
     }
-    
-    else
-    {
-      warpReady = false;
-    }
 
-  }
+}
 
 
 
@@ -275,9 +275,17 @@ void stars()
   
 
 }
-  
-void mouseReleased(){
 
-    speed ++;
- 
+void mouseClicked(){click = true;}
+  
+void warpSpeed(){
+  clear();
+  stars();
+  translate(width/2,height/2,-2000);
+  if (speed<maxWarpSpeed){
+     speed += frameCount/100f;
+  }
+  else{
+    speed = maxWarpSpeed;
+  }
 }
