@@ -1,7 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 import peasy.*;
 import peasy.org.apache.commons.math.*;
 import peasy.org.apache.commons.math.geometry.*;
-
 
 
 /*
@@ -15,6 +21,7 @@ int numOfPlanets = 9;
 int planetDistance = 0;
 int cameraDistance = 200;
 int planetIndex;
+
 
 float sx [] = new float [6];
 float sy [] = new float [6];
@@ -51,6 +58,9 @@ Text userText;
 
 Details allDetails;
 
+// Declaring sound instancies
+Minim minim;
+AudioPlayer door;
 
 void setup (){
 
@@ -100,6 +110,12 @@ void setup (){
   
   
   allDetails = new Details();
+  
+    
+  minim = new Minim(this);
+  
+  door = minim.loadFile("door_slide.mp3");
+  
 
 }
 
@@ -128,12 +144,17 @@ void draw(){
   check();
   
   newLine.activate();
+  door.play();
   
   
   //newLine.test();
       //stroke(50,205,50);
     //strokeWeight(8);
   //line (width-10,height-60,width-35, height -5,100,100);
+
+  
+
+
 
 }
 
@@ -169,6 +190,7 @@ void keyPressed(){
 
 }
 
+
 void check(){
 
   for (int i = 0;i< numOfPlanets;i++){
@@ -201,52 +223,50 @@ void check(){
 
 void displayDetails(float x, float y, float radius, int npoints){
     translate(0,0,-300);
-    int count = 0;
-    float shake = 0.001f;
-    float b = 0;
     float angle = TWO_PI / npoints;
+    int count = 0;
     for (float a = 0; a < TWO_PI; a += angle) {
       sx[count] = x + cos(a) * radius;
       sy[count] = y + sin(a) * radius;
       detailText = createFont("ARCADE",40);
-      textFont(detailText);
+      textFont(detailText);            
+      
       
       switch(currentInput){
 
-        case "mercury":
-          text(allDetails.mercury()[count], sx[count], sy[count]);
-           break;
+       case "mercury":
+         text(allDetails.mercury()[count], sx[count], sy[count]);
+          break;
            
-        case "venus":
-          text(allDetails.earth()[count], sx[count], sy[count]);
-          break;
+       case "venus":
+         text(allDetails.earth()[count], sx[count], sy[count]);
+         break;
           
-        case "earth":
-          text(allDetails.earth()[count], sx[count], sy[count]);
-          break;
+       case "earth":
+         text(allDetails.earth()[count], sx[count], sy[count]);
+         break;
           
-       case "mars":
-          text(allDetails.mars()[count], sx[count], sy[count]);
-          break;
+      case "mars":
+         text(allDetails.mars()[count], sx[count], sy[count]);
+         break;
           
-       case "jupiter":
-          text(allDetails.jupiter()[count], sx[count], sy[count]);
-          break;
+      case "jupiter":
+         text(allDetails.jupiter()[count], sx[count], sy[count]);
+         break;
       
-       case "saturn":
-          text(allDetails.saturn()[count], sx[count], sy[count]);
-          break;
+      case "saturn":
+         text(allDetails.saturn()[count], sx[count], sy[count]);
+         break;
        
-       case "uranus":
-          text(allDetails.uranus()[count], sx[count], sy[count]);
-          break;
+      case "uranus":
+         text(allDetails.uranus()[count], sx[count], sy[count]);
+         break;
           
-       case "neptune":
-          text(allDetails.neptune()[count], sx[count], sy[count]);
-          break;      
+      case "neptune":
+         text(allDetails.neptune()[count], sx[count], sy[count]);
+         break;      
       }
-            
       count++;
-  
+        
     }
   }

@@ -1,13 +1,17 @@
 class Prompt{
 int i,j=0;
-
 boolean line = false;
+
 
 void test(){
 line (width-10,height-60,width-35, height -5);}
-  void activate()
+
+
+void activate()
   {
-  
+
+    
+    
     pushMatrix();
     beginShape();
     stroke(50,205,50);
