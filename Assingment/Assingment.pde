@@ -34,6 +34,7 @@ String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","satur
 boolean stringCheck = false;
 boolean warpReady = false;
 boolean click = false;
+boolean fade = false;
 
 ArrayList<PlanetData> data = new ArrayList<PlanetData>();
 
@@ -63,6 +64,8 @@ Details allDetails;
 // Declaring sound instancies
 Minim minim;
 AudioPlayer door;
+
+Credits endCredits;
 
 void setup (){
 
@@ -118,6 +121,8 @@ void setup (){
   
   door = minim.loadFile("door_slide.mp3");
   
+  endCredits = new Credits();
+  
 
 }
 
@@ -154,8 +159,6 @@ void draw(){
   }
 
 
-
-
 }
 
 // Loading the data of the planets from csv file
@@ -183,6 +186,7 @@ void keyPressed(){
     currentInput = currentInput + key;
     cam = new PeasyCam(this,width/2,height/2-200,3000,0);
   }
+
 
 
 }
@@ -287,5 +291,19 @@ void warpSpeed(){
   }
   else{
     speed = maxWarpSpeed;
+    delay(10);
+    clear();
+    pushMatrix();
+    translate(-width/2,-height/2,2000);
+    endCredits.roll();
+    popMatrix();
   }
+
+}
+
+void fadeToBlack(){
+
+    fill(0, 10);
+    rect(height/2, width/2, width, height);
+  
 }
