@@ -67,7 +67,7 @@ void setup (){
 
   //fullScreen(P3D);
   size(1000,1000,P3D);
-  frameRate(60);
+  frameRate(120);
   noStroke();
   cam = new PeasyCam(this,width/2,height/2-200,3000,0);
 
@@ -126,8 +126,7 @@ void draw(){
   for (int i=1;i<numOfPlanets;i++){
    classPlanets[i].create();
   }
-  
-  stars();
+
   
   userText.display();
   if (currentInput == "")
@@ -139,6 +138,7 @@ void draw(){
   
   newLine.activate();
   //door.play();
+  stars();
   
   
   //newLine.test();
@@ -164,21 +164,18 @@ void keyPressed(){
 
   if(key == ENTER){
     currentInput = "";
-     cam = new PeasyCam(this,width/2,height/2-200,3000,0);
+    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
     for (int i =0;i < numOfPlanets; i++){
      planets[i].setVisible(true);
     }
   }
   else if(key == BACKSPACE && currentInput.length() > 0){
     currentInput = currentInput.substring(0, currentInput.length() - 1);
-    cam = new PeasyCam(this,width/2,height/2-200,3000,0);
-  
+    cam = new PeasyCam(this,width/2,height/2-200,3000,0); 
 }
-  else{
+  else if (keyCode >= 65 && keyCode <=90){
     currentInput = currentInput + key;
-    
     cam = new PeasyCam(this,width/2,height/2-200,3000,0);
-
   }
 
 
@@ -190,6 +187,7 @@ void check(){
   for (int i = 0;i< numOfPlanets;i++){
     if(currentInput.equals(planetNames[i]) == true){
          background(0);
+         stars();
          planetIndex = i;
          classPlanets[planetIndex].shine();
          cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
@@ -267,9 +265,8 @@ void displayDetails(float x, float y, float radius, int npoints){
 void stars()
 {
 
-  ///speed = 0;//map(mouseX, 0, width, 0, 50);
-
-  //translate(width/2, height/2,-2000);
+  //speed = 0;//map(mouseX, 0, width, 0, 50);
+  //translate(100, 100,-2000);
 
   for (int i = 0; i < stars.length; i++) {
    stars[i].update();
@@ -280,8 +277,7 @@ void stars()
 }
   
 void mouseReleased(){
-  if(warpReady)
-  {
+
     speed ++;
-  }
+ 
 }

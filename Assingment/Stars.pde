@@ -8,7 +8,7 @@ class Star {
 
   Star() {
     pushMatrix();
-    translate(width/2,height/2);
+    //translate(width/2,height/2);
     x = random(-width/2, width/2);
     y = random(-height/2, height/2);
     z = random(width/2);
