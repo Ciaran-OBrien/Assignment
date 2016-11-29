@@ -95,3 +95,4 @@ The displayDetails() method is essentially the star method we built in lab1. I u
 
 ### Sources
 [Planet deatails](https://www.msnucleus.org/membership/html/k-6/uc/solar_system/2/ucss2_1a.html)
+[Daniel Shiffman Coding Rainbow](http://codingrainbow.com/)
