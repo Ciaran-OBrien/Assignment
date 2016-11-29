@@ -143,7 +143,7 @@ void draw(){
   check();
   
   newLine.activate();
-  //door.play();
+
   stars();
   
   
