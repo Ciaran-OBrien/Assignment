@@ -32,6 +32,7 @@ String planetsMars = "mars";
 String planetNames [] = {"sun","mars","venus","earth","mercury","jupiter","saturn","uranus","neptune"};
 
 boolean stringCheck = false;
+boolean warpReady = false;
 
 ArrayList<PlanetData> data = new ArrayList<PlanetData>();
 
@@ -126,14 +127,16 @@ void draw(){
    classPlanets[i].create();
   }
   
-  speed = 0;//map(mouseX, 0, width, 0, 50);
+
+  ///speed = 0;//map(mouseX, 0, width, 0, 50);
 
   //translate(width/2, height/2,-2000);
 
   for (int i = 0; i < stars.length; i++) {
-    stars[i].update();
-    stars[i].show();
+   stars[i].update();
+   stars[i].show();
   }
+  
   
   userText.display();
   if (currentInput == "")
@@ -144,7 +147,7 @@ void draw(){
   check();
   
   newLine.activate();
-  door.play();
+  //door.play();
   
   
   //newLine.test();
@@ -152,7 +155,7 @@ void draw(){
     //strokeWeight(8);
   //line (width-10,height-60,width-35, height -5,100,100);
 
-  
+
 
 
 
@@ -200,7 +203,13 @@ void check(){
          classPlanets[planetIndex].shine();
          cam = new PeasyCam(this,classPlanets[planetIndex].getX(), classPlanets[planetIndex].getY(),classPlanets[planetIndex].getZ(),cameraDistance);
          displayDetails(width/2, height/2, 450, 5);
-      }
+         warpReady = true;  
+    }
+    
+    else
+    {
+      warpReady = false;
+    }
 
   }
 
@@ -213,14 +222,7 @@ void check(){
   
 }
   
-  //String [] planetDetails = {"Earth","Explored","Develop","8.6 Parsecs","7 Million"};
-  
-  String planetName = "Earth";
-  String planetStatus = "Explored";
-  String planetDiscription = "Developing liveform curretnly occupies the planet";
-  String planetDistanceDetail = "8.6 parsecs";
-  String planetInhabitants = "7 Million";
-
+ 
 void displayDetails(float x, float y, float radius, int npoints){
     translate(0,0,-300);
     float angle = TWO_PI / npoints;
@@ -270,3 +272,11 @@ void displayDetails(float x, float y, float radius, int npoints){
         
     }
   }
+ 
+  
+void mouseReleased(){
+  if(warpReady)
+  {
+    speed ++;
+  }
+}
